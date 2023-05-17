@@ -10,7 +10,7 @@ if _{{ property.python_name }} is None:
 
     {% endif %}
     {% if not property.required %}
-{% if property.nullable %}elif{% else %}if{% endif %} isinstance(_{{ property.python_name }},  Unset):
+{% if property.nullable %}elif{% else %}if{% endif %} isinstance(_{{ property.python_name }},  Unset) or _{{ property.python_name }} is None:
     {{ property.python_name }} = {% if initial_value != None %}{{ initial_value }}{% else %}UNSET{% endif %}
 
     {% endif %}
